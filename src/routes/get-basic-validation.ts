@@ -26,7 +26,7 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   }
 
   const validator = new ERC721Validator(ctx.web3);
-  const testCase = codes.TESTS_TOKEN.filter(x => x.id === parseInt(query.test))[0];
+  const testCase = codes.TESTS_BASIC.filter(x => x.id === parseInt(query.test))[0];
 
   if (!testCase) {
     return res.respond(404, { error: 'Requested test not found' });
