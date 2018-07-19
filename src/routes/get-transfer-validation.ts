@@ -25,7 +25,11 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
     return res.respond(401, { error: 'Invalid input parameters' });
   }
   const validator = new ERC721Validator(ctx.web3);
-  const testCase = codes.TESTS_TRANSFER.filter(x => x.id === query.test)[0];
+  const testCase = codes.TESTS_TRANSFER.filter(x => x.id === parseInt(query.test))[0];
+
+  if (!testCase) {
+    return res.respond(404, { error: 'Requested test not found' });
+  }
 
   const result = await validator.transfer(query.test, query.contract, query.token, query.giver);
 
