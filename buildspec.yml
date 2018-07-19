@@ -1,0 +1,28 @@
+version: 0.1
+
+phases:
+  pre_build:
+    commands:
+      - printenv
+      - echo `date +%s` > timestamp
+      - $(aws ecr get-login --no-include-email --region ${AWS_DEFAULT_REGION})
+      - echo Build started on `date`
+      - chmod +x ./build-aws.sh
+  build:
+    commands:
+      - docker build -t $IMAGE_REPO_NAME:$BRANCH-$IMAGE_TAG .
+      - docker tag $IMAGE_REPO_NAME:$BRANCH-$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BRANCH-$IMAGE_TAG
+      - echo Docker image built and commited to ECR
+  post_build:
+    commands:
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$BRANCH-$IMAGE_TAG
+      - rm -rf Dockerrun.aws.json
+      - cp Dockerrun.aws.tpl.json Dockerrun.aws.json
+      - sed -i='' "s|<AWS_ACCOUNT_ID>|$AWS_ACCOUNT_ID|" Dockerrun.aws.json
+      - sed -i='' "s|<AWS_REGION>|$AWS_DEFAULT_REGION|" Dockerrun.aws.json
+      - sed -i='' "s|<NAME>|$IMAGE_REPO_NAME|" Dockerrun.aws.json
+      - sed -i='' "s|<TAG>|$BRANCH-$IMAGE_TAG|" Dockerrun.aws.json
+      - zip -r $IMAGE_REPO_NAME-$BRANCH-$IMAGE_TAG.zip Dockerrun.aws.json
+      - aws s3 cp $IMAGE_REPO_NAME-$BRANCH-$IMAGE_TAG.zip s3://$EB_BUCKET/$IMAGE_REPO_NAME-$BRANCH-$IMAGE_TAG.zip
+      - ./build-aws.sh build
+      - echo Build finished on `date`
