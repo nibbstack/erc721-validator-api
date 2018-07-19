@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import { IRequest, IResponse, INextFunction } from '../http';
-import { ERC721Validator } from 'erc721validator';
+import { ERC721Validator } from '@0xcert/erc721-validator';
 import codes from '../config/codes';
 
 /**

@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import { IRequest, IResponse, INextFunction } from '../http';
-import { ERC721Validator } from 'erc721validator';
+import { ERC721Validator } from '@0xcert/erc721-validator';
 import codes from '../config/codes';
 
 /**
@@ -22,7 +22,7 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   const { ctx, query } = req;
 
   if (!query.test || !query.contract) {
-    return res.respond(401, { error: 'Invalid input parameters' })
+    return res.respond(401, { error: 'Invalid input parameters' });
   }
 
   const validator = new ERC721Validator(ctx.web3);
