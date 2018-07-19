@@ -1,0 +1,6 @@
+.DS_Store
+.vscode
+env.sh
+node_modules
+dist
+test

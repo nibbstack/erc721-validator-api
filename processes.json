@@ -1,0 +1,19 @@
+{
+  "apps": [
+    {
+      "name": "0xcert-api",
+      "script": "./scripts/start-http.js",
+      "cwd": "/app/dist",
+      "merge_logs": true,
+      "watch": false,
+      "exec_mode": "fork",
+      "max_restarts": 20,
+      "instances": 1,
+      "env": {
+        "APP_ENV": "production",
+        "API_HOST": "0.0.0.0",
+        "API_PORT": 8080
+      }
+    }
+  ]
+}
