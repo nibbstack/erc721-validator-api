@@ -112,7 +112,7 @@ Most of the routes are `public` which means that user authentication is not requ
 
 | Name | Type | Default | Errors | Description
 |-|-|-|-|-
-| test | Number | - | - | Test case number - valid from 1 - 10.
+| test | Number | - | - | Test case number - valid from 1 - 3.
 | contract | String | - | - | Valid contract address.
 | token | String | - | - | Valid token id.
 
@@ -124,7 +124,7 @@ Most of the routes are `public` which means that user authentication is not requ
 
 | Name | Type | Default | Errors | Description
 |-|-|-|-|-
-| test | Number | - | - | Test case number - valid from 1 - 10.
+| test | Number | - | - | Test case number - valid from 1 - 14.
 | contract | String | - | - | Valid contract address.
 | token | String | - | - | Valid token id.
 | giver | String | - | - | Valid account address.
