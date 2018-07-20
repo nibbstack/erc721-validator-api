@@ -33,6 +33,7 @@ export default {
     {id: 10, expected: true, condition: {'3': true}, description: 'Get a token from giver, approveForAll to stub, then check isApprovedForAll.	Tester must approve Giver contract for the specific token.'},
     {id: 11, expected: true, condition: {'3': true}, description: 'Get a token from giver, approveFor All to stub, then have stub transferFrom to stub2.'},
     {id: 12, expected: true, condition: {'5': true}, description: 'Get token from giver, find balanceOf(self), tokenOfOwnerByIndex(0) should not throw.'},
-    {id: 13, expected: false, condition: {'5': true}, description: 'Get token from giver, find balanceOf(self), tokenOfOwnerByIndex(balanceOf(self)) should throw.'}
+    {id: 13, expected: false, condition: {'5': true}, description: 'Get token from giver, find balanceOf(self), tokenOfOwnerByIndex(balanceOf(self)) should throw.'},
+    {id: 14, expected: true, condition: {'3': true}, description: 'Get token from giver.'}
   ],
 };
