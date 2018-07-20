@@ -31,7 +31,7 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
     return res.respond(404, { error: 'Requested test not found' });
   }
 
-  const result = await validator.transfer(parseInt(query.test), query.contract, query.token, query.giver);
+  const result = await validator.transfer(query.test, query.contract, query.token, query.giver);
 
   res.respond(200, testCase.expected === null ? true : (testCase.expected === result));
 }
