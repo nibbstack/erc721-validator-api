@@ -1,5 +1,7 @@
 # ERC721 Validator API
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/0xcert/erc721-validator-api.svg)](https://greenkeeper.io/)
+
 > REST API for validating ERC-721 contracts.
 
 ## REST API
