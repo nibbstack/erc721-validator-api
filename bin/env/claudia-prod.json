@@ -1,0 +1,11 @@
+{
+  "lambda": {
+    "role": "0xcert-api-deployment-executor",
+    "name": "erc721validator-api",
+    "region": "eu-central-1",
+    "sharedRole": true
+  },
+  "api": {
+    "id": "059gwjw4v6"
+  }
+}

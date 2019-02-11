@@ -18,7 +18,6 @@ export function createRespond(): RequestHandler {
     res.respond = (status: number, data: Object, meta?: Object) => {
       res.status(status).json({
         'data': data,
-        'id': req.ctx.id,
         'meta': meta,
         'status': status,
       });
@@ -38,7 +37,6 @@ export function createThrow(): RequestHandler {
           'code': error.code,
           'message': error.message,
         })),
-        'id': req.ctx.id,
         'status': status,
       });
     };

@@ -22,19 +22,24 @@
     "test:run-tests": "./bin/test/run-tests.sh",
     "dev": "./bin/dev.sh",
     "start": "./bin/start.sh",
-    "test": "./bin/test.sh"
+    "test": "./bin/test.sh",
+    "create": "claudia create --profile 0xcert --source dist --handler lambda.handler --role 0xcert-api-deployment-executor --use-s3-bucket 0xcert-lambda-uploads --use-local-dependencies --memory 1024 --timeout 300 --deploy-proxy-api --region eu-central-1 --set-env-from-json bin/env/env.json --config bin/env/claudia-prod.json --name erc721validator-api",
+    "update": "cp -R node_modules dist/node_modules && claudia update --source dist --handler lambda.handler --role 0xcert-api-deployment-executor --use-s3-bucket 0xcert-lambda-uploads --use-local-dependencies --memory 1024 --timeout 300 --deploy-proxy-api --region eu-central-1 --config bin/env/claudia-prod.json --name erc721validator-api",
+    "production:build": "docker run --rm -v $PWD:/app 0423d0927cbf"
   },
   "engines": {
     "node": ">= 9"
   },
   "dependencies": {
     "@0xcert/erc721-validator": "^0.1.4",
+    "aws-serverless-express": "^3.3.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
     "cli-table2": "^0.2.0",
     "cors": "^2.8.4",
     "express": "^5.0.0-alpha.6",
     "rawmodel": "^1.32.0",
+    "scrypt": "^6.0.3",
     "web3": "1.0.0-beta.34"
   },
   "devDependencies": {
