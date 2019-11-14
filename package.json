@@ -31,7 +31,7 @@
     "node": ">= 9"
   },
   "dependencies": {
-    "@0xcert/erc721-validator": "^0.1.4",
+    "@0xcert/erc721-validator": "^0.1.6",
     "aws-serverless-express": "^3.3.5",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.2",
