@@ -7,25 +7,10 @@
   "types": "./lib/index.d.ts",
   "author": "Leon Panjtar <leon@kalmia.si>",
   "scripts": {
-    "development:build-dist": "./bin/development/build-dist.sh",
-    "development:clean-dist": "./bin/development/clean-dist.sh",
-    "development:lint": "./bin/development/lint.sh",
-    "development:print-env": "./bin/development/print-env.sh",
-    "development:print-routes": "./bin/development/print-routes.sh",
-    "development:run": "node -r ts-node/register --inspect ./src/scripts/start-http",
-    "development:start-http": "./bin/development/start-http.sh",
-    "production:print-env": "./bin/production/print-env.sh",
-    "production:print-routes": "./bin/production/print-routes.sh",
-    "production:start-http": "./bin/production/start-http.sh",
-    "test:print-env": "./bin/test/print-env.sh",
-    "test:print-routes": "./bin/test/print-routes.sh",
-    "test:run-tests": "./bin/test/run-tests.sh",
-    "dev": "./bin/dev.sh",
-    "start": "./bin/start.sh",
-    "test": "./bin/test.sh",
-    "create": "claudia create --profile 0xcert --source dist --handler lambda.handler --role 0xcert-api-deployment-executor --use-s3-bucket 0xcert-lambda-uploads --use-local-dependencies --memory 1024 --timeout 300 --deploy-proxy-api --region eu-central-1 --set-env-from-json bin/env/env.json --config bin/env/claudia-prod.json --name erc721validator-api",
-    "update": "cp -R node_modules dist/node_modules && claudia update --source dist --handler lambda.handler --role 0xcert-api-deployment-executor --use-s3-bucket 0xcert-lambda-uploads --use-local-dependencies --memory 1024 --timeout 300 --deploy-proxy-api --region eu-central-1 --config bin/env/claudia-prod.json --name erc721validator-api",
-    "production:build": "docker run --rm -v $PWD:/app 0423d0927cbf"
+    "build": "npm run clear && tsc",
+    "clear": "rm -Rf ./dist",
+    "start": "npx ts-node ./src/scripts/start-http.ts",
+    "test": "./node_modules/.bin/mocha --timeout 60000 --require ts-node/register --inspect --recursive ./src/tests/**/*.ts"
   },
   "engines": {
     "node": ">= 9"
