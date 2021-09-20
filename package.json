@@ -7,9 +7,10 @@
   "types": "./lib/index.d.ts",
   "author": "Leon Panjtar <leon@kalmia.si>",
   "scripts": {
-    "dev": "./bin/dev.sh",
-    "start": "./bin/start.sh",
-    "test": "./bin/test.sh"
+    "build": "npm run clear && tsc",
+    "clear": "rm -Rf ./dist",
+    "start": "npx ts-node ./src/scripts/start-http.ts",
+    "test": "./node_modules/.bin/mocha --timeout 60000 --require ts-node/register --inspect --recursive ./src/tests/**/*.ts"
   },
   "engines": {
     "node": ">= 9"
