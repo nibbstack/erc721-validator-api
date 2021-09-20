@@ -1,6 +1,6 @@
-import { Stage, ApiHttp } from '.';
+import { Stage, ApiHttp } from '..';
 import * as awsSe from 'aws-serverless-express';
-import env from './config/env';
+import env from '../config/env';
 
 const binaryMimeTypes = [
   'application/octet-stream',
