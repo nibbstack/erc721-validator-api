@@ -1,5 +1,4 @@
-import * as Web3 from 'web3';
-
+const Web3 = require('web3')
 /**
  * Platform environment interface.
  */
@@ -16,7 +15,7 @@ export interface IEnv {
  */
 export class Stage {
   public env: IEnv;
-  public web3: Web3;
+  public web3: any;
 
   /**
    * Class constructor.

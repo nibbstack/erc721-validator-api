@@ -1,5 +1,5 @@
 import { Stage, IEnv } from './stage';
-import * as Web3 from 'web3';
+import Web3 from 'web3';
 
 /**
  * Request object context holds personalized request-based information.

@@ -26,13 +26,13 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   }
 
   const validator = new ERC721Validator(ctx.web3);
-  const testCase = codes.TESTS_BASIC.filter(x => x.id === parseInt(query.test))[0];
+  const testCase = codes.TESTS_BASIC.filter(x => x.id === parseInt(query.test as any))[0];
 
   if (!testCase) {
     return res.respond(404, { error: 'Requested test not found' });
   }
 
-  const result = await validator.basic(query.test, query.contract);
+  const result = await validator.basic(query.test as any, query.contract as any);
 
   res.respond(200, testCase.expected === null ? true : (testCase.expected === result));
 }

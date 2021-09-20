@@ -21,7 +21,7 @@ describe('routes/get-root', () => {
   });
 
   it('checks basic tests', async () => {
-    env.WEB3_URL='https://mainnet.infura.io/1jm7FU1sXc0lHFEYr83f';
+    env.WEB3_URL=''; // TODO add node link.
     const stage = new Stage(env);
     await stage.connect();
     const api = new ApiHttp(stage);
@@ -29,7 +29,6 @@ describe('routes/get-root', () => {
     const res = await request(api.app)
       .get('/basic?test=6&contract=0xf176d7bcdD07f8e474877095870685Ef0CCcCb2D');
 
-    
       assert.equal(res.body.data, true);
   });
 
