@@ -1,0 +1,45 @@
+service: erc721validator-api
+provider:
+  name: aws
+  runtime: nodejs12.x
+  region: us-east-1
+  iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - s3:PutObject
+      - s3:PutObjectAcl
+    Resource: "arn:aws:s3:::erc721validator/*" 
+  stage: ${opt:stage, 'test'}
+  environment:
+    APP_ENV: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):APP_ENV}
+    APP_SECRET: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):APP_SECRET}
+    WEB3_URL: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):WEB3_URL}
+
+plugins:
+- serverless-domain-manager
+
+custom:
+  customDomain:
+    domainName: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):DOMAIN}
+    basePath: ""
+    stage: ${self:provider.stage}
+    createRoute53Record: true
+    certificateName: "0xcert.org"
+    autoDomain: true
+
+functions:
+  # Start Ethereum gateway.
+  rest:
+    handler: dist/scripts/lambda.handler
+    events:
+    - http:
+        path: '{proxy+}'
+        method: ANY
+        cors:
+          origin: '*'
+    - http:
+        path: '/'
+        method: ANY
+        cors:
+          origin: '*'
+    timeout: 30 # api gateway limit is 30
