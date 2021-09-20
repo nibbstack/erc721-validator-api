@@ -76,7 +76,7 @@ export class ApiHttp {
       this.server = this.app.listen(
         this.stage.env.HTTP_PORT,
         this.stage.env.HTTP_HOST,
-        resolve
+        resolve as any,
       );
     });
   }
