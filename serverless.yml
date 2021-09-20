@@ -2,7 +2,7 @@ service: erc721validator-api
 provider:
   name: aws
   runtime: nodejs12.x
-  region: us-east-1
+  region: eu-central-1
   iamRoleStatements:
   - Effect: Allow
     Action:
@@ -24,7 +24,7 @@ custom:
     basePath: ""
     stage: ${self:provider.stage}
     createRoute53Record: true
-    certificateName: "0xcert.org"
+    certificateName: "erc721validator.org"
     autoDomain: true
 
 functions:

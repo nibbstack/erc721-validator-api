@@ -11,7 +11,8 @@
     "clear": "rm -Rf ./dist",
     "start": "npx ts-node ./src/scripts/start-http.ts",
     "test": "./node_modules/.bin/mocha --timeout 60000 --require ts-node/register --inspect --recursive ./src/tests/**/*.ts",
-    "deploy": "npx sls deploy --aws-profile 0xcert"
+    "deploy": "npx sls deploy --aws-profile 0xcert",
+    "deploy:delete": "npx sls remove --aws-profile 0xcert"
   },
   "engines": {
     "node": ">= 9"
