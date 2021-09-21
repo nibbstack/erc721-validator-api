@@ -13,7 +13,9 @@ export default {
   HTTP_HOST: process.env['API_HOST'],
   HTTP_PORT: parseInt(process.env['API_PORT']),
   /**
-   * WEB3_URL.
+   * NODE URLs.
    */
-  WEB3_URL: process.env['WEB3_URL']
+  ETH_MAINNET_URL: process.env['ETH_MAINNET_URL'],
+  ETH_RINKEBY_URL: process.env['ETH_RINKEBY_URL'],
+  ETH_ROPSTEN_URL: process.env['ETH_ROPSTEN_URL'],
 };

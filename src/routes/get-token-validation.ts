@@ -1,7 +1,8 @@
 import { Application } from 'express';
 import { IRequest, IResponse, INextFunction } from '../http';
-import { ERC721Validator } from '@0xcert/erc721-validator';
 import codes from '../config/codes';
+import { ChainCodes, RouteErrorCode } from '../config/types';
+import { ResourceError } from '../lib/errors';
 
 /**
  * Installs profile-related routes on the provided application.
@@ -24,7 +25,17 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   if (!query.test || !query.contract || !query.token) {
     return res.respond(401, { error: 'Invalid input parameters' });
   }
-  const validator = new ERC721Validator(ctx.web3);
+
+  if (!query.chainId) {
+    query.chainId = ChainCodes.ETHEREUM_MAINNET.toString();
+  }
+
+  const validator = ctx.getValidator(query.chainId as string);
+
+  if (!validator) {
+    throw new ResourceError(RouteErrorCode.INVALID_CHAIN_ID)
+  }
+  
   const testCase = codes.TESTS_TOKEN.filter(x => x.id === parseInt(query.test as any))[0];
 
   if (!testCase) {

@@ -1,4 +1,3 @@
-const Web3 = require('web3')
 /**
  * Platform environment interface.
  */
@@ -7,7 +6,9 @@ export interface IEnv {
   APP_SECRET: string;
   HTTP_HOST: string;
   HTTP_PORT: number;
-  WEB3_URL: string;
+  ETH_MAINNET_URL: string;
+  ETH_RINKEBY_URL: string;
+  ETH_ROPSTEN_URL: string;
 }
 
 /**
@@ -15,7 +16,6 @@ export interface IEnv {
  */
 export class Stage {
   public env: IEnv;
-  public web3: any;
 
   /**
    * Class constructor.
@@ -29,16 +29,6 @@ export class Stage {
    * Starts platform connectors.
    */
   public async connect() {
-    await this.connectWeb3();
-  }
-
-  /**
-   * Initializes Web3 connection.
-   */
-  public async connectWeb3() {
-    this.web3 = new Web3(
-      new Web3.providers.HttpProvider(this.env.WEB3_URL)
-    );
   }
 
   /**
