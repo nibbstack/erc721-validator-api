@@ -1,5 +1,6 @@
 .DS_Store
 .vscode
+.serverless*
 env.sh
 node_modules
 dist
