@@ -21,7 +21,9 @@ describe('routes/get-root', () => {
   });
 
   it('checks basic tests', async () => {
-    env.WEB3_URL=''; // TODO add node link.
+    env.ETH_MAINNET_URL=''; // TODO add node link.
+    env.ETH_RINKEBY_URL=''; // TODO add node link.
+    env.ETH_ROPSTEN_URL=''; // TODO add node link.
     const stage = new Stage(env);
     await stage.connect();
     const api = new ApiHttp(stage);
@@ -29,7 +31,22 @@ describe('routes/get-root', () => {
     const res = await request(api.app)
       .get('/basic?test=6&contract=0xf176d7bcdD07f8e474877095870685Ef0CCcCb2D');
 
-      assert.equal(res.body.data, true);
+    assert.equal(res.body.data, true);
+
+    const res2 = await request(api.app)
+      .get('/basic?test=6&contract=0xf176d7bcdD07f8e474877095870685Ef0CCcCb2D&chainId=2');
+
+    assert.equal(res2.body.errors[0].code, 400000);
+
+    const res3 = await request(api.app)
+      .get('/basic?test=1&contract=0xf176d7bcdD07f8e474877095870685Ef0CCcCb2D&chainId=4');
+
+    assert.equal(res3.body.data, false);
+
+    const res4 = await request(api.app)
+    .get('/basic?test=1&contract=0x8e9269bbd0a6e7a3817048e9f9199c5542257ded&chainId=4');
+
+    assert.equal(res4.body.data, true);
   });
 
 });

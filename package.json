@@ -16,7 +16,7 @@
     "node": ">= 9"
   },
   "dependencies": {
-    "@0xcert/erc721-validator": "0.2.1",
+    "@0xcert/erc721-validator": "0.2.2",
     "aws-serverless-express": "^3.4.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
