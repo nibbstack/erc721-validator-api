@@ -43,6 +43,10 @@ export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   }
 
   const result = await validator.transfer(query.test as any, query.contract as any, query.token, query.giver as any);
+  const response = {
+    result: testCase.expected === null ? true : (testCase.expected === result.result),
+    gas: result.gas
+  }
 
-  res.respond(200, testCase.expected === null ? true : (testCase.expected === result));
+  res.respond(200, response);
 }
