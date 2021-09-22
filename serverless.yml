@@ -13,7 +13,9 @@ provider:
   environment:
     APP_ENV: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):APP_ENV}
     APP_SECRET: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):APP_SECRET}
-    WEB3_URL: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):WEB3_URL}
+    ETH_MAINNET_URL: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):ETH_MAINNET_URL}
+    ETH_RINKEBY_URL: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):ETH_RINKEBY_URL}
+    ETH_ROPSTEN_URL: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):ETH_ROPSTEN_URL}
 
 plugins:
 - serverless-domain-manager
