@@ -1,4 +1,4 @@
-import { ERC721Validator } from '@0xcert/erc721-validator';
+import { ERC721Validator } from '@nibbstack/erc721-validator';
 import { ChainCodes, millionCoinAddressMapping } from './config/types';
 import { Stage, IEnv } from './stage';
 const Web3 = require('web3');

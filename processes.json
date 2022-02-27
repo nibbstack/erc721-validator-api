@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "0xcert-api",
+      "name": "erc721-validator-api",
       "script": "./scripts/start-http.js",
       "cwd": "/app/dist",
       "merge_logs": true,

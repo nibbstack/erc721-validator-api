@@ -18,7 +18,7 @@ export function inject(app: Application) {
  */
 export async function resolve(req: IRequest, res: IResponse): Promise<void> {
   return res.respond(200, {
-    'name': '0xcert API',
+    'name': 'ERC-721 Validator API by Nibbstack',
     'description': 'Open protocol for certified non-fungible tokens.',
     'uptime': process.uptime(),
     'version': process.env.npm_package_version,

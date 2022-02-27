@@ -22,11 +22,14 @@ plugins:
 
 custom:
   customDomain:
-    domainName: ${file(./.serverless-env/${opt:stage, self:provider.stage, 'test'}.json):DOMAIN}
+    domainName: api.erc721validator.org
     basePath: ""
-    stage: ${self:provider.stage}
+    certificateName: 'erc721validator.org'
     createRoute53Record: true
-    certificateName: "erc721validator.org"
+    createRoute53IPv6Record: true
+    endpointType: 'regional'
+    securityPolicy: tls_1_2
+    apiType: rest
     autoDomain: true
 
 functions:

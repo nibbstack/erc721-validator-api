@@ -155,7 +155,7 @@ export WEB3_URL='WEB3_URL'
 Run the commands below to install the service and all the required dependencies. Also make sure that you can access required repositories before running the commands below.
 
 ```
-$ git clone git@github.com:0xcert/erc721-vaildator-api.git
+$ git clone git@github.com:nibbstack/erc721-vaildator-api.git
 $ cd erc721-vaildator-api
 $ npm install
 ```

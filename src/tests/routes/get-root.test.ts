@@ -14,7 +14,7 @@ describe('routes/get-root', () => {
       .get('/');
 
     assert.equal(res.status, 200);
-    assert.equal(res.body.data.name, '0xcert API');
+    assert.equal(res.body.data.name, 'ERC-721 Validator API by Nibbstack');
     assert.equal(res.body.data.description, 'Open protocol for certified non-fungible tokens.');
     assert.equal(res.body.data.uptime > 0, true);
     assert.equal(res.body.data.version, '0.1.0');
